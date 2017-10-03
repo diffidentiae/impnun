@@ -1,0 +1,40 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+using namespace std;
+int main()
+{
+  int masA[10],masB[10];
+  int i,maxa,maxb,ka;
+  maxa=INT_MIN;
+  maxb=INT_MIN;
+  for (i=1;i<=10;i++)
+    {
+      cin>>masA[i];
+      if (masA[i]>maxa) 
+      {
+        maxa=masA[i];
+        ka=i;
+      }
+      if (i!=10 && masA[i]=='\n')
+        {
+          printf("An error has occurred while reading numbers");
+          exit(1);
+        }
+    }  
+  for (i=1;i<=10;i++)
+    {
+      cin>>masB[i];
+      if (masB[i]>maxb && i>=ka)
+      {
+        maxb=masB[i];
+      }
+      if (i!=10 && masB[i]=='\n')
+        {
+          printf("An error has occurred while reading numbers");
+          exit(1);
+        }
+    }
+    cout<<maxa+maxb;
+}
