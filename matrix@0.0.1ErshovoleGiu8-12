@@ -1,0 +1,69 @@
+
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+
+using namespace std;
+int main()
+{
+  int simb,i,j,mas1[3][3],mas2[3][3];
+  char sign;
+  
+
+  for (i=0;i<=2;i++)
+      for (j=0;j<=2;j++)
+          mas1[i][j]=0;
+          
+  for (i=0;i<=2;i++)
+    for (j=0;j<=2;j++)
+        mas2[i][j]=0;
+
+  cout<<"\n"<<"Введите 1 массив"<<"\n";        
+  for (i=0;i<=2;i++)
+      for (j=0;j<=2;j++)
+          cin>>mas1[i][j];
+
+  cout<<"\n"<<"Введите операцию"<<"\n";;          
+  cin>>sign;
+
+  cout<<"\n"<<"Введите 2 массив"<<"\n";  
+  for (i=0;i<=2;i++)
+    for (j=0;j<=2;j++)
+        cin>>mas2[i][j];
+  
+  cout<<"\n";
+  cout<<"\n"<<"Ответ:"<<"\n";;        
+  switch(sign)
+  {
+    case '+':
+    for (i=0;i<=2;i++)
+      {
+        for (j=0;j<=2;j++)
+          cout<<" "<<mas1[i][j]+mas2[i][j];
+        cout<<"\n";
+      }
+    break;
+    
+    case '-': 
+    for (i=0;i<=2;i++)
+      {
+        for (j=0;j<=2;j++)
+          cout<<" "<<mas1[i][j]-mas2[i][j];
+        cout<<"\n";
+      }
+    break;
+  
+    case '*': 
+    for (i=0;i<=2;i++)
+      {
+        for (j=0;j<=2;j++)
+          cout<<" "<<mas1[i][j]*mas2[i][j];
+        cout<<"\n";
+      }
+    break;
+    
+    default:
+    cout<<"неверный знак (возможные: +, -, * )";
+  }
+    
+}
