@@ -16,8 +16,8 @@ int main()
       stroka[i]=c;
     }
 
-  for (k=0;k<=i;k++)
-      cout<<stroka[k];
+//  for (k=0;k<=i;k++)
+//      cout<<stroka[k];
   for (k=0;k<=(i)/2;k++)
       a=stroka[k];
       b=stroka[i-k];
