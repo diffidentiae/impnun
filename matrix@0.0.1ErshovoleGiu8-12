@@ -6,9 +6,25 @@
 using namespace std;
 int main()
 {
-  int simb,i,j,mas1[3][3],mas2[3][3];
+  int simb, i=0 , j=0 ,mas1[3][3],mas2[3][3];
   char sign;
-  
+//Способ проверки целостности массива,
+//уродует внешний вид, поэтому не использую
+// while
+//  {
+//    cin>>mas1[i][j];
+//    j++;
+//    if (j==3)
+//      {
+//        j=0;
+//        i++;
+//      }
+//  } (getchar() != "\n")
+//if (i!=3 && j!=0)
+//  {
+//    printf("An error has occurred while reading numbers");
+//    exit(1);
+//  }  
 
   for (i=0;i<=2;i++)
       for (j=0;j<=2;j++)
