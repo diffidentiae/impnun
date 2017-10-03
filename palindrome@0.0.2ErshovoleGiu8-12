@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+int main()
+{
+    int i=-1;
+    int k,a,b;
+    char c;
+    char stroka[]="nerabotaet";
+    while (( c=getchar()) != '\n')
+    {
+      a=c;
+      if ((a>=65 && a<=90) || (a>=97 && a<=122))
+        {
+          i++;          
+          stroka[i]=c;
+        }
+    }
+//    for (k=0;k<=i;k++)
+//      cout<<WordVector[k];
+    for (k=0;k<=i/2;k++)
+      {
+        a=stroka[k];
+//          cout<<"\n"<<"a "<<a;
+        b=stroka[i-k];
+//          cout<<"\n"<<"b "<<b;
+        if ((a != b) && (a != b+32) && (a != b-32))
+          {
+            cout<<"\n"<<'0';
+            getchar();
+            exit(1);
+          }
+          
+      }
+    cout<<"\n"<<'1';
+    getchar();
+}    
