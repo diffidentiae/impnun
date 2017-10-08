@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 using namespace std;
+std::string stroka;
 int main()
 {
     int i=-1;
     int k,a,b;
     char c;
-    char stroka[]="nerabotaet";
+//    char stroka[]="nerabotaet";
     while (( c=getchar()) != '\n')
     {
       a=c;
