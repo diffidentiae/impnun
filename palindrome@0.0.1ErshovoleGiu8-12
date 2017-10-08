@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <string.h>
 using namespace std;
+std::string stroka;
 int main()
 {
     int i=-1;
     int k,a,b;
     char c;
-    char stroka[]="nerabotaet";
+//    char stroka[]="nerabotaet";
     while (( c=getchar()) != '\n')
     {
       i++;
@@ -17,16 +18,21 @@ int main()
     }
 
 //  for (k=0;k<=i;k++)
-//      cout<<stroka[k];
+//      cout<<"\n"<<stroka[k];
   for (k=0;k<=(i)/2;k++)
-      a=stroka[k];
-      b=stroka[i-k];
+    {  
+//      a=stroka[k];
+//      cout<<"\n"<<a;
+//      b=stroka[i-k];
+//      cout<<"\n"<<b;
       if (a != b)
         {
-          cout<<'0';
+          cout<<"\n"<<'0';
           getchar();
           exit(1);
         }
-    cout<<'1'; 
+    }
+    cout<<"\n"<<'1'; 
     getchar();
-}   
+
+}    
