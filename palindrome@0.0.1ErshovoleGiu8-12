@@ -21,9 +21,9 @@ int main()
 //      cout<<"\n"<<stroka[k];
   for (k=0;k<=(i)/2;k++)
     {  
-//      a=stroka[k];
+       a=stroka[k];
 //      cout<<"\n"<<a;
-//      b=stroka[i-k];
+        b=stroka[i-k];
 //      cout<<"\n"<<b;
       if (a != b)
         {
