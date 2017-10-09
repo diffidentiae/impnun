@@ -9,7 +9,8 @@ int main()
     char c;
     do
       {
-        cin>>a>>c;
+        cin>>a;
+        c=getchar();
         switch(c)
           {
             case '+':
@@ -28,7 +29,7 @@ int main()
             s=s/a;
             break;
           }
-      } while (c != '\n');
+      } while (c!='\n');
       cout<<"\n"<<s;
       return 0;
 }
