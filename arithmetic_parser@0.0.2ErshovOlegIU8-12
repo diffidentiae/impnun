@@ -28,7 +28,7 @@ int main()
             s=s/a;
             break;
           }
-      } while (c != EOF);
+      } while (c != "\n");
       cout<<"\n"<<s;
       return 0;
 }
