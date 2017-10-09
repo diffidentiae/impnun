@@ -3,11 +3,11 @@
 #include <stdio.h>
 using namespace std;
 int main()
-  {
+{
     int a;
     float s=0;
     char c;
-    while
+    do
       {
         cin>>a>>c;
         switch(c)
@@ -27,6 +27,6 @@ int main()
             case '/': 
             s=s/a;
             break;
-      } (c != "\n")
+      } while (c != "\n")
       cout<<"\n"<<s;
-  }
+}
