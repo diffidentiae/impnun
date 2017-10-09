@@ -7,10 +7,12 @@ int main()
     int a;
     float s=0;
     char c;
+    cin>>a
+    s+=a
     do
       {
-        cin>>a;
         c=getchar();
+        cin>>a;
         switch(c)
           {
             case '+':
