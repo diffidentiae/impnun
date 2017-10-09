@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+int main()
+  {
+    int a;
+    float s=0;
+    char c;
+    while
+      {
+        cin>>a>>c;
+        switch(c)
+          {
+            case '+':
+            s+=a;
+            break;
+    
+            case '-': 
+            s-=a;
+            break;
+  
+            case '*': 
+            s=s*a;
+            break;
+
+            case '/': 
+            s=s/a;
+            break;
+      } (c != "\n")
+      cout<<"\n"<<s;
+  }
