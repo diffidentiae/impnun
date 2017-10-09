@@ -27,6 +27,8 @@ int main()
             case '/': 
             s=s/a;
             break;
-      } while (c != "\n")
+          }
+      } while (c != EOF);
       cout<<"\n"<<s;
+      return 0;
 }
