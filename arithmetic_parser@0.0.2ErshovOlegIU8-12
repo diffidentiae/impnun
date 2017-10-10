@@ -7,11 +7,12 @@ int main()
     int a;
     float s=0;
     char c;
-    cin>>a
-    s+=a
+    cin>>a;
+    s+=a;
     do
       {
-        c=getchar();
+        if ((c=getchar())=='\n')
+          break;
         cin>>a;
         switch(c)
           {
@@ -31,7 +32,7 @@ int main()
             s=s/a;
             break;
           }
-      } while (c!='\n');
+      } while (c!='=');
       cout<<"\n"<<s;
       return 0;
 }
