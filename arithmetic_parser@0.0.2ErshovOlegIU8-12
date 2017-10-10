@@ -6,13 +6,15 @@ int main()
 {
     int a;
     float s=0;
-    char c;
+    char cp1,c,cp2;
     cin>>a;
     s+=a;
     do
       {
+        cp1=getchar();
         if ((c=getchar())=='\n')
           break;
+        cp2=getchar();
         cin>>a;
         switch(c)
           {
