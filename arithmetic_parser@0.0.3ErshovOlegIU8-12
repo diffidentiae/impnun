@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+using namespace std;
+int main()
+{
+    int a1,a2;
+    float s=0;
+    char c1,c2;
+    c2='+';
+    cin>>a2;
+    s+=a2;
+    
+    do
+      {
+        
+        if ((c2=getchar())=='\n')
+            break;
+
+        if (c2==' ')
+          c2=getchar();
+          
+        cin>>a2;
+        
+        switch(c2)
+          {
+            case '+':
+            s+=a2;
+            c1=c2;
+            a1=a2;
+            break;
+    
+            case '-': 
+            s-=a2;
+            c1=c2;
+            a1=a2;
+            break;
+  
+            case '*': 
+            if (c1=='+')
+              {
+                s-=a1;
+                a1=a1*a2;
+                s+=a1;
+              }
+            if (c1=='-')
+              {
+                s+=a1;
+                a1=a1*a2;
+                s-=a1;
+              } 
+            break;
+
+            case '/': 
+            if (c1=='+')
+              {
+                s-=a1;
+                a1=a1/a2;
+                s+=a1;
+              }
+            if (c1=='-')
+              {
+                s+=a1;
+                a1=a1/a2;
+                s-=a1;
+              } 
+            break;
+          }
+      
+      } while (c2!='=');
+      
+      cout<<"\n"<<s;
+      return 0;
+}
