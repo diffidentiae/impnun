@@ -7,9 +7,9 @@ int main()
     int a1,a2;
     float s=0;
     char c1,c2;
-    c2='+';
-    cin>>a2;
-    s+=a2;
+    c1='+';
+    cin>>a1;
+    s+=a1;
     
     do
       {
