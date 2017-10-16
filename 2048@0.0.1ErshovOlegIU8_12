@@ -1,0 +1,57 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <cstdlib>
+#define N 4
+
+using namespace std;
+int main()
+{
+  int i,j,ran1,ran2;
+  int masM[N][N]/*= {
+    {0,0,0,0},
+    {0,2,0,0},
+    {0,0,4,0},
+    {0,2,0,0}};*/
+  char c;
+  printf("2048\nЖелаете ввести массив самостоятельно Y/N?\n");
+    if ((c=getchar())=='Y'||c=='y')
+      {
+          for (i=0;i<N;i++)
+            {
+              for (j=0;j<N;j++)
+                cin>>masM[i][j];
+              cout<<"\n";
+            }
+      }
+    else
+      {
+        for (i=0;i<N;i++)
+          for (j=0;j<N;j++)
+            {
+              ran1=rand() % 1;
+              ran2=rand() % 10;
+              if (ran1==1)
+                {
+                  if (ran2<10)
+                    masM[i][j]=2;
+                  else
+                    masM[i][j]=4;
+                }
+            }
+      }
+//  while ((c=getchar())!='\n')
+
+//output    
+  for (i=0;i<N;i++)
+    {
+      for (j=0;j<N;j++)
+        if (masM[i][j]==0)
+          printf("%4c",'*');
+        else
+          printf("%4d",masM[i][j]);
+      cout<<"\n";
+    }
+    
+    getchar();
+}
