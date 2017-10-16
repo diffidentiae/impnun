@@ -2,19 +2,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstdlib>
-#include <time.h> 
+#include <time.h>  
 #define N 4
 
 using namespace std;
 int main()
 {
   int i,j,ran1,ran2;
-  int masM[N][N]/*= {
+  int masM[N][N];/*= {
     {0,0,0,0},
     {0,2,0,0},
     {0,0,4,0},
     {0,2,0,0}};*/
   char c;
+  srand (time(NULL));
   printf("2048\nЖелаете ввести массив самостоятельно Y/N?\n");
     if ((c=getchar())=='Y'||c=='y')
       {
@@ -30,29 +31,40 @@ int main()
         for (i=0;i<N;i++)
           for (j=0;j<N;j++)
             {
-              ran1=rand() % 1;
-              ran2=rand() % 10;
-              if (ran1==1)
+              ran1=rand() % 3;
+              ran2=rand() % 11;
+              if (ran1==0)
                 {
                   if (ran2<10)
                     masM[i][j]=2;
                   else
                     masM[i][j]=4;
                 }
+              else
+                masM[i][j]=0;
             }
       }
-//  while ((c=getchar())!='\n')
-
+    for (i=0;i<N;i++)
+      {
+        for (j=0;j<N;j++)
+          if (masM[i][j]==0)
+            printf("%4c",'*');
+          else
+            printf("%4d",masM[i][j]);
+        cout<<"\n";
+      }
+//  while ((c=getchar())!='q')
+//  {
+//  sw
 //output    
-  for (i=0;i<N;i++)
-    {
-      for (j=0;j<N;j++)
-        if (masM[i][j]==0)
-          printf("%4c",'*');
-        else
-          printf("%4d",masM[i][j]);
-      cout<<"\n";
-    }
-    
+    for (i=0;i<N;i++)
+      {
+        for (j=0;j<N;j++)
+          if (masM[i][j]==0)
+            printf("%4c",'*');
+          else
+            printf("%4d",masM[i][j]);
+        cout<<"\n";
+      }
     getchar();
 }
