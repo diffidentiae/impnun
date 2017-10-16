@@ -15,6 +15,7 @@ int main()
     {0,0,4,0},
     {0,2,0,0}};*/
   char c;
+  int a1;
   srand (time(NULL));
   printf("2048\nЖелаете ввести массив самостоятельно Y/N?\n");
     if ((c=getchar())=='Y'||c=='y')
@@ -53,9 +54,21 @@ int main()
             printf("%4d",masM[i][j]);
         cout<<"\n";
       }
-//  while ((c=getchar())!='q')
-//  {
-//  sw
+  while ((c=getchar())!='q')
+  {
+    switch(c)
+        {
+            case 'j':
+                for (i=0;i<N;i++)
+                 {
+                     a1=masM[3][i];
+                    for (j=3;j>=0;j--)
+                        {
+                             
+                        }
+                 }
+            break;
+        }
 //output    
     for (i=0;i<N;i++)
       {
