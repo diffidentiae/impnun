@@ -1,5 +1,5 @@
-#include <iostream>
 #include "stdafx.h"
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstdlib>
@@ -49,8 +49,8 @@ int main()
 			else
 				printf("%4d", masM[i][j]);
 		printf("\n");
-	}
-	while ((c = getchar()) != 'q')
+	} 
+	while (std::cin >> c && c != 'q')
 	{
 		switch (c)
 		{
