@@ -1,5 +1,5 @@
-#include <iostream>
 #include "stdafx.h"
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstdlib>
@@ -45,9 +45,9 @@ int main()
 	{
 		for (j = 0; j<N; j++)
 			if (masM[i][j] == 0)
-				printf("%4c", '*');
+				std::cout.width(4)<<'*';
 			else
-				printf("%4d", masM[i][j]);
+				std::cout.width(4)<<masM[i][j];
 		printf("\n");
 	}
 	while ((c = getchar()) != 'q')
@@ -82,15 +82,6 @@ int main()
 				elem[0] = 0;				
 				elem[1] = N;
 			}
-			for (i = 0; i < N; i++)
-			{
-				for (j = 0; j < N; j++)
-					if (masM[i][j] == 0)
-						printf("%4c", '*');
-					else
-						printf("%4d", masM[i][j]);
-				printf("\n");
-			}
 			break;
 
 
@@ -121,15 +112,6 @@ int main()
 				}
 				elem[0] = 0;
 				elem[1] = -1;
-			}
-			for (i = 0; i < N; i++)
-			{
-				for (j = 0; j < N; j++)
-					if (masM[i][j] == 0)
-						printf("%4c", '*');
-					else
-						printf("%4d", masM[i][j]);
-				printf("\n");
 			}
 			break;
 
@@ -162,15 +144,6 @@ int main()
 				elem[0] = 0;
 				elem[1] = -1;
 			}
-			for (i = 0; i < N; i++)
-			{
-				for (j = 0; j < N; j++)
-					if (masM[i][j] == 0)
-						printf("%4c", '*');
-					else
-						printf("%4d", masM[i][j]);
-				printf("\n");
-			}
 			break;
 
 
@@ -202,17 +175,18 @@ int main()
 				elem[0] = 0;
 				elem[1] = N;
 			}
-			for (i = 0; i < N; i++)
-			{
-				for (j = 0; j < N; j++)
-					if (masM[i][j] == 0)
-						printf("%4c", '*');
-					else
-						printf("%4d", masM[i][j]);
-				printf("\n");
-			}
 			break;
 		}
+		
+	for (i = 0; i<N; i++)
+	{
+		for (j = 0; j<N; j++)
+			if (masM[i][j] == 0)
+				std::cout.width(4)<<'*';
+			else
+				std::cout.width(4)<<masM[i][j];
+		printf("\n");
+	}
 	}/*
 		//output    
 		for (i = 0; i<N; i++)
