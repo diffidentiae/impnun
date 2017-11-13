@@ -1,0 +1,76 @@
+#include "stdafx.h"
+#include <iostream>
+#include <complex>
+#include <stdlib.h>
+#include <stdio.h>
+#include <cstdlib>
+#include <stddef.h>
+
+using namespace std;
+std::string stroka;
+struct compleks{
+	float real;
+	float img;
+};
+int main()
+{
+	compleks compl1;
+	compleks compl2;
+//	char stroka[20];
+	cout << "Введите строку";
+	cin >> stroka;
+	int skobka = 0, zap = 0;
+	char c1 = '+', c2 = '+';
+	complex<float> sum;
+	complex<float> compl;
+	while (stroka != "" || c2 != '\n')
+	{
+		skobka = stroka.find('(');
+		zap = stroka.find(',');
+		if (zap == 0) {
+			cout << "An error has occured while reading input data";
+			exit(EXIT_FAILURE);
+		}
+		compl1.real = strtof(stroka.substr(skobka + 1, zap - skobka - 1));
+		skobka = 0;
+		skobka = stroka.find(')');
+		if (zap == 0) {
+			cout << "An error has occured while reading input data";
+			exit(EXIT_FAILURE);
+		}
+		compl1.img = strtof(stroka.substr(zap + 1, skobka - zap - 1));
+		
+		int i = skobka;
+		while (stroka[i] != '(' )
+		{
+			i++;
+			if (stroka[i] != ' '&&stroka[i] != '(')
+			{
+				c2 = stroka[i];
+				break;
+			}
+		}
+		switch (c1)
+		{
+			case '+':
+				sum += compl;
+				break;
+			case '-':
+				sum -= compl;
+				break;
+			case '*':
+				sum = sum * compl;
+				break;
+			case '/`':
+				sum = sum / compl;
+				break;
+			default:
+				cout << "An error has occured while reading input data";
+				break;
+		}
+		c1 = c2;
+	}
+	cout << "результат:  " << sum;
+    return 0;
+}
+
