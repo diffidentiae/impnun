@@ -45,9 +45,15 @@ int main()
 	{
 		for (j = 0; j<N; j++)
 			if (masM[i][j] == 0)
-				printf("%4c", '*');
+			{
+				cout.width(4);
+				std::cout<<'*';
+			}
 			else
-				printf("%4d", masM[i][j]);
+			{
+				cout.width(4);
+				std::cout<<masM[i][j];
+			}
 		printf("\n");
 	} 
 	while (std::cin >> c && c != 'q')
@@ -197,21 +203,16 @@ int main()
 	{
 		for (j = 0; j<N; j++)
 			if (masM[i][j] == 0)
-				std::cout.width(4)<<'*';
+			{
+				cout.width(4);
+				std::cout<<'*';
+			}
 			else
-				std::cout.width(4)<<masM[i][j];
+			{
+				cout.width(4);
+				std::cout<<masM[i][j];
+			}
 		printf("\n");
 	}
-	}/*
-		//output    
-		for (i = 0; i<N; i++)
-		{
-			for (j = 0; j<N; j++)
-				if (masM[i][j] == 0)
-					printf("%4c", '*');
-				else
-					printf("%4d", masM[i][j]);
-			printf("\n");
-		}
-		getchar();	*/
+	}
 }
