@@ -2,7 +2,6 @@
 #include <iostream>
 #include <complex>
 
-
 using namespace std;
 std::string stroka;
 struct complex_t 
@@ -10,11 +9,6 @@ struct complex_t
 	float real;
 	float imag;
 };
-
-
-
-
-
 std::istream & read(std::istream & stream, complex_t & complex) 
 {
 
@@ -41,10 +35,6 @@ std::istream & read(std::istream & stream, complex_t & complex)
 	return stream;
 
 }
-
-
-
-
 int main()
 {
 	complex_t compl1;
@@ -79,4 +69,3 @@ int main()
 	getchar();
    // return 0;
 }
-
