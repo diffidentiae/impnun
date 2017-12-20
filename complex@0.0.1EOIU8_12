@@ -1,76 +1,82 @@
 #include "stdafx.h"
 #include <iostream>
 #include <complex>
-#include <stdlib.h>
-#include <stdio.h>
-#include <cstdlib>
-#include <stddef.h>
+
 
 using namespace std;
 std::string stroka;
-struct compleks{
+struct complex_t 
+{
 	float real;
-	float img;
+	float imag;
 };
+
+
+
+
+
+std::istream & read(std::istream & stream, complex_t & complex) 
+{
+
+	char c;
+	float real;
+	float imag;
+	if (stream >> c && c == '(' && 
+		stream >> real && 
+		stream >> c && c == ',' &&
+		stream >> imag &&
+		stream >> c && c == ')') 
+	{
+		complex.real = real;
+		complex.imag = imag;
+	}
+
+	else 
+		{
+			std::cout << "An error has occured while reading input data";
+		}
+
+
+
+	return stream;
+
+}
+
+
+
+
 int main()
 {
-	compleks compl1;
-	compleks compl2;
-//	char stroka[20];
-	cout << "Введите строку";
-	cin >> stroka;
-	int skobka = 0, zap = 0;
-	char c1 = '+', c2 = '+';
-	complex<float> sum;
-	complex<float> compl;
-	while (stroka != "" || c2 != '\n')
-	{
-		skobka = stroka.find('(');
-		zap = stroka.find(',');
-		if (zap == 0) {
-			cout << "An error has occured while reading input data";
-			exit(EXIT_FAILURE);
-		}
-		compl1.real = strtof(stroka.substr(skobka + 1, zap - skobka - 1));
-		skobka = 0;
-		skobka = stroka.find(')');
-		if (zap == 0) {
-			cout << "An error has occured while reading input data";
-			exit(EXIT_FAILURE);
-		}
-		compl1.img = strtof(stroka.substr(zap + 1, skobka - zap - 1));
-		
-		int i = skobka;
-		while (stroka[i] != '(' )
-		{
-			i++;
-			if (stroka[i] != ' '&&stroka[i] != '(')
-			{
-				c2 = stroka[i];
-				break;
-			}
-		}
-		switch (c1)
+	complex_t compl1;
+	complex_t compl2;
+	char zn;
+
+	if(read(cin,compl1)&&(cin>>zn)&&read(cin,compl2))
+		switch (zn)
 		{
 			case '+':
-				sum += compl;
+				compl1.real = compl1.real + compl2.real;
+				compl1.imag = compl1.imag + compl2.imag;
 				break;
 			case '-':
-				sum -= compl;
+				compl1.real = compl1.real - compl2.real;
+				compl1.imag = compl1.imag - compl2.imag;
 				break;
 			case '*':
-				sum = sum * compl;
+				compl1.real = compl1.real*compl2.real - compl1.imag*compl2.imag;
+				compl1.imag = compl1.real*compl2.imag + compl1.imag*compl2.real;
 				break;
 			case '/`':
-				sum = sum / compl;
+				compl1.real = (compl1.real*compl2.real*(-1) - compl1.imag*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
+				compl1.real = (compl1.imag*compl2.real*(-1) - compl1.real*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
 				break;
 			default:
-				cout << "An error has occured while reading input data";
+				std::cout << "An error has occured while reading input data";
 				break;
 		}
-		c1 = c2;
-	}
-	cout << "результат:  " << sum;
-    return 0;
+	
+	cout <<"resultat:  " <<"( "<<compl1.real<<", "<<compl1.imag<<")";
+	getchar();
+   // return 0;
 }
 
