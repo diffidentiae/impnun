@@ -2,42 +2,41 @@
 #include <iostream>
 
 using namespace std;
+std::istream & read(std::istream & stream, int & n, int  * ptr) 
 
-std::istream & read(std::istream & stream, int & b) 
 {
-  	int c;
- 	if(stream>>c)
+	int c,l;
+  	for (l=0;l<n;l++)
   	{
-    		b=c;
+    		if(stream>>c)
+    		{
+     			ptr[l]=c;
+    		}
+    		else 
+		{
+			std::cout << "An error has occured while reading input data";
+		}
   	}
- 	else 
-	{
-		std::cout << "An error has occured while reading input data";
-	}
 	return stream;
 }
-  
 int main() 
 {
-  	int a,i,j,point=0;
+  	int a,i,j;
   	cin>>a;
   	int *mas=new int[a];
-  	for (i=0;i<a;i++)
-    		if (read(cin,mas[i]))
-      			;
-  
-  	for(i=1;i<a;i++)
-  	{
-  		point=i;
-    		for(j=i-1;j>=0;j--)
-    		{
-      			if (mas[point]<mas[j])
-      			{
-        			std::swap(mas[point],mas[j]);
-        			point=j;
-      			} 
-    		}
-  	}
+	if (read(cin,a,mas))
+		for(i=1;i<a;i++)
+		{
+			point=i;
+			for(j=i-1;j>=0;j--)
+			{
+				if (mas[point]<mas[j])
+				{
+					std::swap(mas[point],mas[j]);
+					point=j;
+				} 
+			}
+		}
   	cout<<"massiv: ";
   	for (i=0;i<a;i++)
     		cout<<mas[i]<<" ";
