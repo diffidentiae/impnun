@@ -3,7 +3,7 @@
 #include <complex>
 
 using namespace std;
-std::string stroka;
+
 struct complex_t 
 {
 	float real;
@@ -11,7 +11,6 @@ struct complex_t
 };
 std::istream & read(std::istream & stream, complex_t & complex) 
 {
-
 	char c;
 	float real;
 	float imag;
@@ -26,12 +25,9 @@ std::istream & read(std::istream & stream, complex_t & complex)
 	}
 
 	else 
-		{
-			std::cout << "An error has occured while reading input data";
-		}
-
-
-
+	{
+		std::cout << "An error has occured while reading input data";
+	}
 	return stream;
 
 }
@@ -40,7 +36,6 @@ int main()
 	complex_t compl1;
 	complex_t compl2;
 	char zn;
-
 	if(read(cin,compl1)&&(cin>>zn)&&read(cin,compl2))
 		switch (zn)
 		{
@@ -57,8 +52,8 @@ int main()
 				compl1.imag = compl1.real*compl2.imag + compl1.imag*compl2.real;
 				break;
 			case '/`':
-				compl1.real = (compl1.real*compl2.real*(-1) - compl1.imag*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
-				compl1.real = (compl1.imag*compl2.real*(-1) - compl1.real*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
+				compl1.real = (compl1.real*compl2.real - compl1.imag*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
+				compl1.real = (compl1.imag*compl2.real - compl1.real*compl2.imag*(-1)) / (compl2.real*compl2.real - compl2.imag*compl2.imag);
 				break;
 			default:
 				std::cout << "An error has occured while reading input data";
@@ -66,6 +61,5 @@ int main()
 		}
 	
 	cout <<"resultat:  " <<"( "<<compl1.real<<", "<<compl1.imag<<")";
-	getchar();
-   // return 0;
+
 }
