@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
 	int i, j, ran1, ran2;
-	int masM[N][N]; /* = { {2,0,0,0},{2,2,0,0},{2,0,4,0},{2,2,0,0} }; */
+	int masM[N][N];
 	char c;
 	srand(time(NULL));
 	printf("2048\nWould you like to input masM Y/N?\n");
@@ -19,8 +19,8 @@ int main()
 		for (i = 0; i<N; i++)
 		{
 			for (j = 0; j<N; j++)
-				scanf_s("%d",masM[i][j]);
-			printf("\n");
+				cin>>masM[i][j];
+			cout<<"\n";
 		}
 	}
 	else
@@ -46,12 +46,10 @@ int main()
 		for (j = 0; j<N; j++)
 			if (masM[i][j] == 0)
 			{
-				cout.width(4);
 				std::cout<<'*';
 			}
 			else
 			{
-				cout.width(4);
 				std::cout<<masM[i][j];
 			}
 		printf("\n");
@@ -189,15 +187,13 @@ int main()
 		for (j = 0; j<N; j++)
 			if (masM[i][j] == 0)
 			{
-				cout.width(4);
 				std::cout<<'*';
 			}
 			else
 			{
-				cout.width(4);
 				std::cout<<masM[i][j];
 			}
 		printf("\n");
 	}
 	}
-	}
+}
