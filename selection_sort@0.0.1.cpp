@@ -2,39 +2,39 @@
 
 using namespace std;
 
-std::istream & read(std::istream & stream, int & b) 
+std::istream & read(std::istream & stream, int & n, int  * ptr) 
+
 {
-  	int c;
-  	if(stream>>c)
+	int c,l;
+  	for (l=0;l<n;l++)
   	{
-    		b=c;
+    		if(stream>>c)
+    		{
+     			ptr[l]=c;
+    		}
+    		else 
+		{
+			std::cout << "An error has occured while reading input data";
+		}
   	}
-  	else 
-	{
-		std::cout << "An error has occured while reading input data";
-	}
 	return stream;
 }
-  
 int main() 
 {
-	int a,i,j,point=0;
+  	int a,i,j;
   	cin>>a;
   	int *mas=new int[a];
-  	for (i=0;i<a;i++)
-    		if (read(cin,mas[i]))
-      			;
-  
-  	for(i=0;i<a;i++)
-  	{
-    		for(j=i;j<a;j++)
-      		{
-        		if (mas[j]<mas[point])
-          		point=j;
-      		}
-    		std::swap(mas[i],mas[point]);
-    		point=i+1;
-  	}
+	if (read(cin,a,mas))
+		for(i=0;i<a;i++)
+		{
+			for(j=i;j<a;j++)
+			{
+				if (mas[j]<mas[point])
+				point=j;
+			}
+			std::swap(mas[i],mas[point]);
+			point=i+1;
+		}
   	cout<<"massiv: ";
   	for (i=0;i<a;i++)
    		cout<<mas[i]<<" ";
