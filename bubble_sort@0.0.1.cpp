@@ -2,14 +2,24 @@
 
 using namespace std;
 
+std::istream & reada(std::istream & stream, int & h)
+{
+	if (stream>>h)
+  	;
+  else
+  	std::cout << "An error has occured while reading input data";
+	return stream;
+}
+
 std::istream & read(std::istream & stream, int & n, int  * ptr) 
+
 {
 	int c,l;
   	for (l=0;l<n;l++)
   	{
     		if(stream>>c)
     		{
-      			ptr[l]=c;
+     			ptr[l]=c;
     		}
     		else 
 		{
@@ -18,11 +28,11 @@ std::istream & read(std::istream & stream, int & n, int  * ptr)
   	}
 	return stream;
 }
-  
 int main() 
 {
   	int a,i,j;
-  	cin>>a;
+  	if (reada(cin,a))
+		;
   	int *mas=new int[a];
   	if (read(cin,a,mas))
 		for(i=0;i<a;i++)
