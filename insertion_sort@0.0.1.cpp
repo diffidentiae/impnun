@@ -4,15 +4,15 @@ using namespace std;
 
 std::istream & read(std::istream & stream, int & b) 
 {
-  int c;
-  if(stream>>c)
-  {
-    b=c;
-  }
-  else 
-		{
-			std::cout << "An error has occured while reading input data";
-		}
+  	int c;
+ 	if(stream>>c)
+  	{
+    		b=c;
+  	}
+ 	else 
+	{
+		std::cout << "An error has occured while reading input data";
+	}
 	return stream;
 }
   
@@ -27,17 +27,17 @@ int main()
   
   for(i=1;i<a;i++)
   {
-    point=i;
-    for(j=i-1;j>=0;j--)
-      {
-        if (mas[point]<mas[j])
-        {
-          std::swap(mas[point],mas[j]);
-          point=j;
-        }  
-      }
+  	point=i;
+    	for(j=i-1;j>=0;j--)
+    	{
+      		if (mas[point]<mas[j])
+      		{
+        		std::swap(mas[point],mas[j]);
+        		point=j;
+      		} 
+    	}
   }
   cout<<"massiv: ";
   for (i=0;i<a;i++)
-    cout<<mas[i]<<" ";
+    	cout<<mas[i]<<" ";
 }
