@@ -2,6 +2,15 @@
 
 using namespace std;
 
+std::istream & reada(std::istream & stream, int & h)
+{
+	if (stream>>h)
+  	;
+  else
+  	std::cout << "An error has occured while reading input data";
+	return stream;
+}
+
 std::istream & read(std::istream & stream, int & n, int  * ptr) 
 
 {
@@ -22,7 +31,8 @@ std::istream & read(std::istream & stream, int & n, int  * ptr)
 int main() 
 {
   	int a,i,j;
-  	cin>>a;
+  	if (reada(cin,a))
+		;
   	int *mas=new int[a];
 	if (read(cin,a,mas))
 		for(i=0;i<a;i++)
