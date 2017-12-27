@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include <iostream>
 #include <complex>
@@ -31,12 +32,21 @@ std::istream & read(std::istream & stream, complex_t & complex)
 	return stream;
 
 }
+std::ostream & write(std::ostream & stream, complex_t & complex)
+{
+	if (stream << "(" && stream << complex.real &&
+	    stream << "," && 
+	    stream << complex.imag && stream << ")")
+		;
+	return stream;
+}
 int main()
 {
 	complex_t compl1;
 	complex_t compl2;
 	char zn;
 	if(read(cin,compl1)&&(cin>>zn)&&read(cin,compl2))
+	{
 		switch (zn)
 		{
 			case '+':
@@ -59,7 +69,9 @@ int main()
 				std::cout << "An error has occured while reading input data";
 				break;
 		}
+	}
 	
-	cout <<"resultat:  " <<"( "<<compl1.real<<", "<<compl1.imag<<")";
+	if (write(cout,compl1))
+		;
 
 }
