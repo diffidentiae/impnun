@@ -13,13 +13,15 @@ int main()
 	int masM[N][N];
 	char c;
 	srand(time(NULL));
-	printf("2048\nWould you like to input masM Y/N?\n");
+	cout<<"2048\nWould you like to input masM Y/N?\n";
 	if ((c = getchar()) == 'Y' || c == 'y')
 	{
 		for (i = 0; i<N; i++)
 		{
 			for (j = 0; j<N; j++)
+			{
 				cin>>masM[i][j];
+			}
 			cout<<"\n";
 		}
 	}
@@ -197,18 +199,18 @@ int main()
 			}
 		} while (masM[i][j] != 0);
 
-	for (i = 0; i<N; i++)
-	{
-		for (j = 0; j<N; j++)
-			if (masM[i][j] == 0)
-			{
-				std::cout<<'*';
-			}
-			else
-			{
-				std::cout<<masM[i][j];
-			}
-		printf("\n");
-	}
+		for (i = 0; i<N; i++)
+		{
+			for (j = 0; j<N; j++)
+				if (masM[i][j] == 0)
+				{
+					std::cout<<'*';
+				}
+				else
+				{
+					std::cout<<masM[i][j];
+				}
+			printf("\n");
+		}
 	}
 }
