@@ -2,16 +2,18 @@
 
 using namespace std;
 
-std::istream & reada(std::istream & stream, int & h)
+std::istream & amountinput(std::istream & stream, int & h)
 {
 	if (stream>>h)
-  	;
-  else
-  	std::cout << "An error has occured while reading input data";
+  		;
+  	else
+	{
+  		std::cout << "An error has occured while reading input data";
+	}
 	return stream;
 }
 
-std::istream & read(std::istream & stream, int & n, int  * ptr) 
+std::istream & arrayinput(std::istream & stream, int & n, int  * ptr) 
 
 {
 	int c,l;
@@ -28,13 +30,24 @@ std::istream & read(std::istream & stream, int & n, int  * ptr)
   	}
 	return stream;
 }
+std::ostream & arrayoutput(std::ostream & stream, int & n, int  * ptr)
+{
+	int p;
+	for (p=0;p<n;p++)
+	{
+		if (stream << ptr[p] && stream << " ")
+			;
+	}
+	return stream;
+}
 int main() 
 {
   	int a,i,j;
-  	if (reada(cin,a))
+  	if (amountinput(cin,a))
 		;
   	int *mas=new int[a];
-	if (read(cin,a,mas))
+	if (arrayinput(cin,a,mas))
+	{
 		for(i=0;i<a;i++)
 		{
 			for(j=i;j<a;j++)
@@ -45,8 +58,8 @@ int main()
 			std::swap(mas[i],mas[point]);
 			point=i+1;
 		}
-  	cout<<"massiv: ";
-  	for (i=0;i<a;i++)
-   		cout<<mas[i]<<" ";
+	}	
+	if (arrayoutput(cout,a,mas))
+		;
 	delete [] mas;
 }
