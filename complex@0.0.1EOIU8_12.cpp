@@ -71,7 +71,5 @@ int main()
 		}
 	}
 	
-	if (write(cout,compl1))
-		;
-
+	write(cout,compl1);
 }
