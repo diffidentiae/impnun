@@ -1,31 +1,75 @@
-#include "stdafx.h"
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <cstdlib>
+#include <string>
 #include <time.h>  
 #define N 4
 
 using namespace std;
+
+std::istream & arrayinput(std::istream & stream, int array[][N], int l) 
+{
+	char c;
+	int massivstroki[N];
+	int k;
+	for (k=0;k<N;k++)
+	{
+		if (stream>>massivstroki[k])
+		{
+			array[l][k]=massivstroki[k];
+		}
+		else 
+		{
+			std::cout << "An error has occured while reading input data";
+		}
+	}
+
+	
+	return stream;
+
+}
+
+std::ostream & arrayoutput(std::ostream & stream, int  array[][N])
+{
+	int i,j;
+	for (i=0;i<N;i++)
+	{
+		for (j=0;j<N;j++)
+		{
+			if (array[i][j] == 0)
+			{
+				cout.width(4);
+				std::cout<<'*';
+			}
+			else
+			{
+				cout.width(4);
+				std::cout<<array[i][j];
+			}	
+		}
+		cout<<"\n";
+	}
+}
+
+
 int main()
 {
-	int i, j, ran1, ran2;
-	int masM[N][N];
-	char c;
 	srand(time(NULL));
+	char question;
 	cout<<"2048\nWould you like to input masM Y/N?\n";
-	if ((c = getchar()) == 'Y' || c == 'y')
+	int i, j=0;
+	int masM[N][N];
+	string vvod;
+	if ((question = getchar()) == 'Y' || question == 'y')
 	{
 		for (i = 0; i<N; i++)
 		{
-			for (j = 0; j<N; j++)
-				cin>>masM[i][j];
-			cout<<"\n";
+			arrayinput(cin,masM,i);
 		}
 	}
 	else
-	{
+	{ 
+		int ran1, ran2;
 		for (i = 0; i<N; i++)
+		{
 			for (j = 0; j<N; j++)
 			{
 				ran1 = rand() % 3;
@@ -40,23 +84,13 @@ int main()
 				else
 					masM[i][j] = 0;
 			}
+		}
 	}
-	for (i = 0; i<N; i++)
+
+	string c;
+	while (getline(cin,c,'\n')&&(c[0]!='q'))
 	{
-		for (j = 0; j<N; j++)
-			if (masM[i][j] == 0)
-			{
-				std::cout<<'*';
-			}
-			else
-			{
-				std::cout<<masM[i][j];
-			}
-		cout<<"\n";
-	}
-	while ((c = getchar()) != 'q')
-	{
-		switch (c)
+		switch (c[0])
 		{
 		case 'j':
 			for (j = 0; j < N; j++)
@@ -182,18 +216,6 @@ int main()
 			break;
 		}
 		
-		for (i = 0; i<N; i++)
-		{
-			for (j = 0; j<N; j++)
-				if (masM[i][j] == 0)
-				{
-					std::cout<<'*';
-				}
-				else
-				{
-					std::cout<<masM[i][j];
-				}
-			cout<<"\n";
-		}
+		arrayoutput(cout,masM);
 	}
 }
