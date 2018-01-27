@@ -7,7 +7,6 @@ using namespace std;
 
 std::istream & arrayinput(std::istream & stream, int array[][N], int l) 
 {
-	char c;
 	int massivstroki[N];
 	int k;
 	for (k=0;k<N;k++)
