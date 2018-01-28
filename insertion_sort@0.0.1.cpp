@@ -36,8 +36,7 @@ std::ostream & arrayoutput(std::ostream & stream, int & n, int  * ptr)
 	int p;
 	for (p=0;p<n;p++)
 	{
-		if (stream << ptr[p] && stream << " ")
-			;
+		stream << ptr[p] && stream << " ";
 	}
 	return stream;
 }
@@ -48,6 +47,7 @@ int main()
 		;
   	int *mas=new int[a];
 	int i,j;
+	int point;
 	if (arrayinput(cin,a,mas))
 	{
 		for(i=1;i<a;i++)
@@ -63,6 +63,6 @@ int main()
 			}
 		}
 	}
-	if (arrayoutput(cout,a,mas))
+	arrayoutput(cout,a,mas);
 	delete [] mas;
 }
