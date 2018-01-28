@@ -6,8 +6,10 @@ using namespace std;
 std::istream & amountinput(std::istream & stream, int & h)
 {
 	if (stream>>h)
+	{
   		;
-  	else
+	}
+	else
 	{
   		std::cout << "An error has occured while reading input data";
 	}
