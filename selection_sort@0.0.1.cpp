@@ -5,8 +5,10 @@ using namespace std;
 std::istream & amountinput(std::istream & stream, int & h)
 {
 	if (stream>>h)
+	{
   		;
-  	else
+	}
+	else
 	{
   		std::cout << "An error has occured while reading input data";
 	}
@@ -35,17 +37,17 @@ std::ostream & arrayoutput(std::ostream & stream, int & n, int  * ptr)
 	int p;
 	for (p=0;p<n;p++)
 	{
-		if (stream << ptr[p] && stream << " ")
-			;
+		stream << ptr[p] && stream << " ";
 	}
 	return stream;
 }
 int main() 
 {
-  	int a,i,j;
+  	int a;
   	if (amountinput(cin,a))
 		;
   	int *mas=new int[a];
+	int i,j;
 	if (arrayinput(cin,a,mas))
 	{
 		for(i=0;i<a;i++)
@@ -59,7 +61,6 @@ int main()
 			point=i+1;
 		}
 	}	
-	if (arrayoutput(cout,a,mas))
-		;
+	arrayoutput(cout,a,mas)
 	delete [] mas;
 }
