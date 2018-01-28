@@ -44,8 +44,7 @@ std::ostream & arrayoutput(std::ostream & stream, int & n, int  * ptr)
 int main() 
 {
   	int a;
-  	if (amountinput(cin,a))
-		;
+  	amountinput(cin,a);
   	int *mas=new int[a];
 	int i,j;
 	if (arrayinput(cin,a,mas))
