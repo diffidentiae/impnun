@@ -80,8 +80,7 @@ int main()
   	amountinput(cin,a);
   	int *mas=new int[a];
   	arrayinput(cin,a,mas);
-  	int wall=0;
-	  sortalg(mas,a-1);
-	  arrayoutput(cout,a,mas);
+	sortalg(mas,a-1);
+	arrayoutput(cout,a,mas);
   	delete [] mas;
 }
