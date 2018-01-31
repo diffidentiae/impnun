@@ -7,13 +7,12 @@ using namespace std;
 
 std::istream & arrayinput(std::istream & stream, int array[][N], int l) 
 {
-	int massivstroki[N];
 	int k;
 	for (k=0;k<N;k++)
 	{
-		if (stream>>massivstroki[k])
+		if (stream>>array[l][k])
 		{
-			array[l][k]=massivstroki[k];
+			;
 		}
 		else 
 		{
@@ -88,7 +87,7 @@ int main()
 
 	string c;
 	bool smthchanged = false;
-	while (getline(cin,c,'\n')&&(c[0]!='q'))
+	while (getline(cin,c)&&(c.size()!=0)&&(c[0]!='q'))
 	{
 		switch (c[0])
 		{
@@ -106,7 +105,8 @@ int main()
 							elem[0] = masM[elem[1]][j];
 							if (elem[1] != i)
 							{
-								masM[i][j] = 0;								
+								masM[i][j] = 0;	
+								smthchanged = true;
 							}
 						}
 						else
@@ -117,6 +117,7 @@ int main()
 							if (elem[1] != i)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 					}
@@ -142,6 +143,7 @@ int main()
 							if (elem[1] != i)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 						else
@@ -152,6 +154,7 @@ int main()
 							if (elem[1] != i)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 					}
@@ -177,6 +180,7 @@ int main()
 							if (elem[1] != j)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 						else
@@ -187,6 +191,7 @@ int main()
 							if (elem[1] != j)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 					}
@@ -223,6 +228,7 @@ int main()
 							if (elem[1] != i)
 							{
 								masM[i][j] = 0;
+								smthchanged = true;
 							}
 						}
 					}
@@ -250,6 +256,7 @@ int main()
 				}
 			} while (masM[i][j] != 0);
 		}
+		smthchanged = false;
 		arrayoutput(cout,masM);
 	}
 }
