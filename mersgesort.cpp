@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <iostream>
 
 using namespace std;
@@ -9,9 +10,9 @@ bool amountinput(std::istream & stream, unsigned int & size)
 
 std::istream & arrayinput(std::istream & stream, unsigned int size, int * ptr)
 {
-	for(unsigned int i = 0; i < size; i++)
+	for (unsigned int i = 0; i < size; i++)
 	{
-		if( !(stream >> ptr[i]) )
+		if (!(stream >> ptr[i]))
 		{
 			std::cout << "An error has occured while reading input data";
 		}
@@ -21,10 +22,10 @@ std::istream & arrayinput(std::istream & stream, unsigned int size, int * ptr)
 
 void mergealg(int * array, int leftwall, int rightwall, int middle)
 {
-	int leftside = leftwall,rightside = middle+1;
+	int leftside = leftwall, rightside = middle + 1;
 	int currentpos = 0;
 	int * mergearray = new int[rightwall - leftwall + 1];
-	while (leftside <= middle && rightside <=rightwall)
+	while (leftside <= middle && rightside <= rightwall)
 	{
 		if (array[leftside] < array[rightside])
 		{
@@ -41,22 +42,21 @@ void mergealg(int * array, int leftwall, int rightwall, int middle)
 	}
 	while (leftside <= middle)
 	{
-		mergearray[currentpos]=array[leftside];
+		mergearray[currentpos] = array[leftside];
 		leftside++;
 		currentpos++;
 	}
 	while (rightside <= rightwall)
 	{
-		mergearray[currentpos]=array[rightside];
+		mergearray[currentpos] = array[rightside];
 		rightside++;
 		currentpos++;
 	}
-	int i;
-	for (i=leftwall;i<=rightwall;i++)
+	for (int i = leftwall;i <= rightwall;i++)
 	{
-		array[i]=mergearray[i-leftwall];
+		array[i] = mergearray[i - leftwall];
 	}
-	delete [] mergearray;	
+	delete[] mergearray;
 }
 
 void mergesortalg(int * array, int leftwall, int rightwall)
@@ -64,10 +64,10 @@ void mergesortalg(int * array, int leftwall, int rightwall)
 	int middle;
 	if (leftwall<rightwall)
 	{
-		middle = (leftwall+rightwall)/2;
-		mergesortalg(array,leftwall,middle);
-		mergesortalg(array,middle+1,rightwall);
-		mergealg(array,leftwall,rightwall,middle);
+		middle = (leftwall + rightwall) / 2;
+		mergesortalg(array, leftwall, middle);
+		mergesortalg(array, middle + 1, rightwall);
+		mergealg(array, leftwall, rightwall, middle);
 	}
 }
 
@@ -79,17 +79,17 @@ std::ostream & arrayoutput(std::ostream & stream, unsigned int size, int  * ptr)
 	}
 	return stream;
 }
-int main() 
+int main()
 {
-  	unsigned int size;
-  	if (amountinput(cin,size))
+	unsigned int size;
+	if (amountinput(cin, size))
 	{
-		int *mas=new int[size];
-		if (arrayinput(cin,size,mas))
+		int *mas = new int[size];
+		if (arrayinput(cin, size, mas))
 		{
-			mergesortalg(mas,0,size-1);
-			arrayoutput(cout,size,mas);
-			delete [] mas;
+			mergesortalg(mas, 0, size - 1);
+			arrayoutput(cout, size, mas);
 		}
+		delete[] mas;
 	}
 }
