@@ -53,7 +53,7 @@ struct complex_t
 
 	std::ostream & write(std::ostream & stream) const
 	{
-		return stream  << '(' << real << ', ' << imag << ')';
+		return stream  << "(" << real << ", " << imag << ")";
 	}
 
 };
