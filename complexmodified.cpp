@@ -89,6 +89,9 @@ int main()
 				result=a.div(b);
 				result.write(cout);
 				break;
+			
+			default :
+				cout << "An error has occured while reading input data";
 		}
 	}
 }
