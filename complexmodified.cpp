@@ -18,9 +18,8 @@ struct complex_t
 	float real;
 	float imag;
 	
-	complex_t add(complex_t other) const//this - complex_t * const this with const константный указатель на константный тип
+	complex_t add(complex_t other) const
 	{
-		// ne verno !!! this = &other;
 		complex_t result;
 		result.real=/*this->*/real+other.real;
 		result.imag=/*this->*/imag+other.imag;
@@ -58,7 +57,6 @@ struct complex_t
 
 	std::ostream & write(std::ostream & stream) const
 	{
-		//ne verno !!! read(std::cin)
 		return stream  << real << imag;
 	}
 
