@@ -16,8 +16,8 @@ struct complex_t
 	complex_t add(complex_t other) const
 	{
 		complex_t result;
-		result.real=/*this->*/real+other.real;
-		result.imag=/*this->*/imag+other.imag;
+		result.real=real+other.real;
+		result.imag=imag+other.imag;
 		return result;
 	}
 
@@ -40,19 +40,19 @@ struct complex_t
 	complex_t div(complex_t other) const
 	{
 		complex_t result;
-		result.real=real/other.real;
-		result.imag=imag/other.imag;
+		result.real=(real*other.real - imag*other.imag*(-1)) / (other.real*other.real - other.imag*other.imag);
+		result.imag=(imag*other.real - real*other.imag*(-1)) / (other.real*other.real - other.imag*other.imag);
 		return result;
 	}	
-	
+	cin op;
 	std::istream & read(std::istream & stream)
 	{
-		return  stream >> real >> imag;
+		return  stream >> op >> real>> op >> imag >> op;
 	}
 
 	std::ostream & write(std::ostream & stream) const
 	{
-		return stream  << real << imag;
+		return stream  << op << real << op << imag << op;
 	}
 
 };
