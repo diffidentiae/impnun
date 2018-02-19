@@ -10,11 +10,6 @@ struct complex_t
 		imag=0.0f;
 	}
 	
-	~complex_t()
-	{
-		
-	}
-	
 	float real;
 	float imag;
 	
@@ -37,8 +32,8 @@ struct complex_t
 	complex_t multi(complex_t other) const
 	{
 		complex_t result;
-		result.real=real*other.real;
-		result.imag=imag*other.imag;
+		result.real=real*other.real - imag*other.imag;
+		result.imag=real*other.imag + imag*other.real;
 		return result;
 	}
 	
