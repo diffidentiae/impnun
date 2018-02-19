@@ -44,15 +44,16 @@ struct complex_t
 		result.imag=(imag*other.real - real*other.imag*(-1)) / (other.real*other.real - other.imag*other.imag);
 		return result;
 	}	
-	cin op;
+	
 	std::istream & read(std::istream & stream)
 	{
+		char op;
 		return  stream >> op >> real>> op >> imag >> op;
 	}
 
 	std::ostream & write(std::ostream & stream) const
 	{
-		return stream  << op << real << op << imag << op;
+		return stream  << '(' << real << ', ' << imag << ')';
 	}
 
 };
