@@ -20,7 +20,7 @@ public:
 		data_ = new int*[rows];
 		for (unsigned int i = 0;i<rows;i++)
 		{
-			data_[i] = new int[collumns]/*(0)*/;
+			data_[i] = new int[collumns];
 			for (unsigned int j = 0; j < collumns_; j++)
 			{
 				data_[i][j] = 0;
@@ -43,14 +43,14 @@ public:
 		}
 		delete[] data_;
 	}
-	
-	matrix_t(matrix_t const & other) 
-	{ 
+
+	matrix_t(matrix_t const & other)
+	{
 		data_ = new int *[other.rows_];
 		for (unsigned int i = 0; i < other.rows_; i++)
 		{
 			data_[i] = new int[other.collumns_];
-			for (unsigned int j = 0; j < other.collumns_; j++) 
+			for (unsigned int j = 0; j < other.collumns_; j++)
 			{
 				data_[i][j] = other.data_[i][j];
 			}
@@ -58,7 +58,33 @@ public:
 		rows_ = other.rows_;
 		collumns_ = other.collumns_;
 	}
-	
+
+	matrix_t & operator =(matrix_t const & other)
+	{
+		if (this != &other)
+		{
+			for (unsigned int i = 0;i<rows_;i++)
+			{
+				delete[] data_[i];
+			}
+			delete[] data_;
+
+			data_ = new int *[other.rows_];
+			for (unsigned int i = 0; i < other.rows_; i++)
+			{
+				data_[i] = new int[other.collumns_];
+				for (unsigned int j = 0; j < other.collumns_; j++)
+				{
+					data_[i][j] = other.data_[i][j];
+				}
+			}
+			rows_ = other.rows_;
+			collumns_ = other.collumns_;
+		}
+
+		return *this;
+	}
+
 	matrix_t add(matrix_t const & other) const
 	{
 		matrix_t result(rows_, collumns_);
@@ -158,7 +184,7 @@ int main()
 	{
 		ifstream file1(filename1);
 		string op;
-		getline(cin,op);
+		getline(cin, op);
 		unsigned int rows1, collumns1;
 		switch (op[0])
 		{
@@ -177,9 +203,9 @@ int main()
 							matrix_t matrix2(rows2, collumns2);
 							matrix_t matrixresult(rows1, collumns1);
 							matrix1.read(file1);
-							matrix1.read(file2);
+							matrix2.read(file2);
 							matrixresult = matrix1.add(matrix2);
-							matrixresult.write(cout);							
+							matrixresult.write(cout);
 						}
 					}
 					else
@@ -216,7 +242,7 @@ int main()
 							matrix1.read(file1);
 							matrix1.read(file2);
 							matrixresult = matrix1.sub(matrix2);
-							matrixresult.write(cout);							
+							matrixresult.write(cout);
 						}
 					}
 					else
@@ -253,7 +279,7 @@ int main()
 							matrix1.read(file1);
 							matrix1.read(file2);
 							matrixresult = matrix1.mul(matrix2);
-							matrixresult.write(cout);							
+							matrixresult.write(cout);
 						}
 					}
 					else
@@ -298,4 +324,3 @@ int main()
 		cout << "An error has occurred while reading input data";
 	}
 }
-
