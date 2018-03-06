@@ -245,7 +245,7 @@ int main()
 							matrix_t matrix2(rows2, collumns2);
 							matrix_t matrixresult(rows1, collumns1);
 							matrix1.read(file1);
-							matrix1.read(file2);
+							matrix2.read(file2);
 							matrixresult = matrix1.sub(matrix2);
 							matrixresult.write(cout);
 						}
@@ -282,7 +282,7 @@ int main()
 							matrix_t matrix2(rows2, collumns2);
 							matrix_t matrixresult(rows1, collumns2);
 							matrix1.read(file1);
-							matrix1.read(file2);
+							matrix2.read(file2);
 							matrixresult = matrix1.mul(matrix2);
 							matrixresult.write(cout);
 						}
