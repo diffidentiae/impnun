@@ -46,11 +46,6 @@ public:
 
 	matrix_t(matrix_t const & other)
 	{
-		for (unsigned int i = 0;i<rows_;i++)
-			{
-				delete[] data_[i];
-			}
-		delete[] data_;
 		data_ = new int *[other.rows_];
 		for (unsigned int i = 0; i < other.rows_; i++)
 		{
