@@ -18,7 +18,7 @@ public:
 		rows_ = rows;
 		collumns_ = collumns;
 		data_ = new int*[rows];
-		for (unsigned int i = 0;i<rows;i++)
+		for (unsigned int i = 0; i<rows; i++)
 		{
 			data_[i] = new int[collumns];
 			for (unsigned int j = 0; j < collumns_; j++)
@@ -37,7 +37,7 @@ public:
 
 	~matrix_t()
 	{
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)
 		{
 			delete[] data_[i];
 		}
@@ -63,7 +63,7 @@ public:
 	{
 		if (this != &other)
 		{
-			for (unsigned int i = 0;i<rows_;i++)
+			for (unsigned int i = 0; i<rows_; i++)
 			{
 				delete[] data_[i];
 			}
@@ -90,7 +90,7 @@ public:
 		matrix_t result(rows_, collumns_);
 		for (unsigned int i = 0; i < rows_; i++)
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
 				result.data_[i][j] = data_[i][j] + other.data_[i][j];
 			}
@@ -101,9 +101,9 @@ public:
 	matrix_t sub(matrix_t const & other) const
 	{
 		matrix_t result(rows_, collumns_);
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
 				result.data_[i][j] = data_[i][j] - other.data_[i][j];
 			}
@@ -114,16 +114,14 @@ public:
 	matrix_t mul(matrix_t const & other) const
 	{
 		matrix_t result(rows_, other.collumns_);
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
-				int sum = 0;
-				for (unsigned int k = 0;k<collumns_;k++)
+				for (unsigned int k = 0; k<collumns_; k++)
 				{
-					sum += data_[i][k] * other.data_[k][j];
+					result.data_[i][j] += data_[i][k] * other.data_[k][j];
 				}
-				result.data_[i][j] = sum;
 			}
 		}
 		return result;
@@ -132,9 +130,9 @@ public:
 	matrix_t trans() const
 	{
 		matrix_t result(collumns_, rows_);
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
 				result.data_[j][i] = data_[i][j];
 			}
@@ -144,9 +142,9 @@ public:
 
 	std::ifstream & read(std::ifstream & stream)
 	{
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)	
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
 				if (!(stream >> data_[i][j]))
 				{
@@ -159,9 +157,9 @@ public:
 
 	std::ostream & write(std::ostream & stream) const
 	{
-		for (unsigned int i = 0;i<rows_;i++)
+		for (unsigned int i = 0; i<rows_; i++)
 		{
-			for (unsigned int j = 0;j<collumns_;j++)
+			for (unsigned int j = 0; j<collumns_; j++)
 			{
 				stream << data_[i][j] << " ";
 			}
@@ -180,11 +178,11 @@ bool RnCinput(std::ifstream & stream, unsigned int & rows, unsigned int & collum
 int main()
 {
 	string filename1, filename2;
-	if (getline(cin, filename1) && (filename1.size() != 0))
+	if (getline(cin, filename1,' ') && (filename1.size() != 0))
 	{
 		ifstream file1(filename1);
 		string op;
-		getline(cin, op);
+		getline(cin, op,' ');
 		unsigned int rows1, collumns1;
 		switch (op[0])
 		{
