@@ -4,7 +4,7 @@ using namespace std;
 
 class tree_t
 {
-private:
+private: 
 	struct node_t 
   {
 		node_t * left_;
