@@ -6,27 +6,27 @@ class vector1 {
 	public:
 	vector1();
 	vector1(int N);
-	vector1(vector1 Copy);
 	~vector1();
+	int lengthPush();
 	void input();
 	void output();
 	int findMax();
-	vector1 operator + (vector1 rightVec);
-	vector1 operator - (vector1 rightVec);
 };
 
 int main() {
 	int length1, length2;
-	std::cout << "Введите длину первого вектора: ";
+	std::cout << "Введите длину вектора: ";
 	std::cin >> length1;
 	vector1 a(length1);
-	std::cout << "Введите длину второго вектора: ";
-	std::cin >> length2;
-	vector1 b(length2);
-
-
-	
+	a.input();
+	a.output();
+	std::cout << "Максимум: " << a.findMax();
 	return 0;
+}
+
+vector1::vector1(){
+	length = 0;
+	vectorData = nullptr;
 }
 
 vector1::vector1(int N) {
@@ -44,8 +44,9 @@ void vector1::input() {
 		std::cout << "ошибка инициализации массива";
 	}
 	else {
+		std::cout << "Введите " << length << " элементов через enter: \n";
 		for (int i = 0; i < length; i++) {
-			std::cout << "Введите " << length << " элементов через enter: \n";
+			
 			std::cin >> vectorData[i]; 
 		}
 
@@ -70,7 +71,7 @@ int vector1::findMax() {
 	}
 	else {
 		int max = vectorData[0];
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < lengthPush(); i++) {
 			if (max < vectorData[i])
 				max = vectorData[i];
 		}
@@ -79,12 +80,6 @@ int vector1::findMax() {
 	return 0;
 }
 
-vector1 vector1::operator + (vector1 rightVec) {
-	if ()
-	vector1 result();
-	return ;
+int vector1::lengthPush() {
+	return this->length;
 }
-
-vector1 vector1::operator - (vector1 rightVec) {
-
- }
