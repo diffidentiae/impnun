@@ -1,0 +1,95 @@
+from typing import Final
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+
+
+TOKEN: Final = 
+BOT_USERNAME: Final = 
+
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Привет, с помощью меня можно создать заявку о возникшей проблеме в общежитии МГТУ')
+
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Я могу помочь тебе с проблемами и выполнить комманды по бронированию услуг')
+
+async def request_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Введите свой запрос, постарайтесь подробно описать ситуацию, указать комнату, номер общежития и проблему')
+
+async def payment_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Введите месяц для которого нужна квитанция')
+
+async def washer_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Введите время в которое вы хотите воспользоваться стиральной машиной')
+
+async def cowork_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Введите время на которое нужно забронировать коворкинг')
+
+async def cleaning_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Введите номер общежития, указать комнату и удобное для уборки время')
+
+async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Я отменил последний запрос')
+
+
+def handle_response(text: str) -> str:
+
+    processed: str = text.lower()
+    
+    if 'квитанция' in processed:
+        return 'Вот твоя квитанция за этот месяц, она приложена файлом ниже'
+
+    if 'коворкинг' in processed:
+        return 'Я забронировал комнату номер 1 на это время, если передумал напиши "отмена"'
+
+    if 'уборка комнаты' in processed:
+        return 'Я забронировал уборку на указанное время, если передумал напиши "отмена"'
+
+    if 'стирка' in processed:
+        return 'Твое место в очереди на стирку забронировано, если передумал напиши "отмена"'
+
+    if 'проблема' in processed:
+        return 'Твоя проблема будет скоро обработана и с тобой свяжутся по ее решению, если передумал напиши "отмена"'
+
+    if 'отмена' in processed:
+        return 'Я отменил последний запрос'
+
+    return 'Я еще не знаю такой запрос'
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message_type: str = update.message.chat.type
+    text: str = update.message.text
+    
+    print(f'User({update.message.chat.id}) in {message_type}: "{text}"')
+    
+    response: str = handle_response(text)
+    
+    print('Bot:', response)
+    await update.message.reply_text(response)
+
+async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(f'Update {update} caused error {context.error}')
+    
+    
+if __name__ == '__main__':
+    app = Application.builder().token(TOKEN).build()
+    
+    app.add_handler(CommandHandler('start', start_command))
+    app.add_handler(CommandHandler('help', help_command))
+    app.add_handler(CommandHandler('request', request_command))
+    app.add_handler(CommandHandler('coworking', cowork_command))
+    app.add_handler(CommandHandler('payment', payment_command))
+    app.add_handler(CommandHandler('washer', washer_command))
+    app.add_handler(CommandHandler('cleaning', cleaning_command))
+    app.add_handler(CommandHandler('cancel', cancel_command))
+    
+
+    
+    app.add_handler(MessageHandler(filters.TEXT, handle_message))
+    
+    app.add_error_handler(error)
+    
+    print('Polling')
+    app.run_polling(poll_interval=1)
+
+
+
